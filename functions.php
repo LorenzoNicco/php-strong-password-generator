@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     $password = '';
     function passwordGenerator($length) {
         $characterList = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890!$%&/?@#*+-/_:.;,';
@@ -12,5 +14,11 @@
         return $passwordGenerated;
     }
 
-    $password = passwordGenerator($_GET["getLength"])
+    if (isset($_GET["getLength"])) {
+        $password = passwordGenerator($_GET["getLength"]);
+
+        $_SESSION['password'] = $password;
+        header('Location: ./passwordShow.php');
+    }
+
 ?>
