@@ -1,19 +1,5 @@
 <?php
-
-    $password = '';
-    function passwordGenerator($length) {
-        $characterList = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890!£$%&/?@#éè*+-/òà-_:.;,';
-        $passwordGenerated = '';
-        
-        for ($i = 0; $i < $length; $i++) {
-            $randomIndex = rand(0, strlen($characterList));
-            $passwordGenerated .= $characterList[$randomIndex];
-        }
-        
-        return $passwordGenerated;
-    }
-
-    $password = passwordGenerator($_GET["getLength"])
+    include __DIR__ .'/functions.php';
 ?>
 
 <!DOCTYPE html>
