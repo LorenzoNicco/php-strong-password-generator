@@ -31,6 +31,11 @@
                 <label for="symbols">Simboli</label>
                 <input type="checkbox" id="symbols" name="passwordParts[]" value="symbols">
             </div>
+
+            <div>
+                <label for="repeat">Ripetizione caratteri</label>
+                <input type="checkbox" id="repeat" name="passwordParts[]" value="repeat">
+            </div>
             <button type="submit">Submit</button>
         </form>
     </body>

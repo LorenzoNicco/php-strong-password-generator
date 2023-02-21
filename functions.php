@@ -13,6 +13,7 @@
         $passwordLetters = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
         $passwordNumbers = '1234567890';
         $passwordSymbols = '!$%&/?@#*+-/_:.;,';
+        $passwordRepeat = false;
 
         if (in_array('letters', $parts)) {
             $characterList .= $passwordLetters;
@@ -26,11 +27,26 @@
             $characterList .= $passwordSymbols;
         }
 
+        if (in_array('repeat', $parts)) {
+            $passwordRepeat = true;
+        }
+
         $passwordGenerated = '';
         
         for ($i = 0; $i < $length; $i++) {
             $randomIndex = rand(0, strlen($characterList));
-            $passwordGenerated .= $characterList[$randomIndex];
+
+            if ($passwordRepeat) {
+                if (strpos($passwordGenerated, $characterList[$randomIndex])) {
+                    $randomIndex = rand(0, strlen($characterList));
+                }
+                else {
+                    $passwordGenerated .= $characterList[$randomIndex];
+                }
+            }
+            else {
+                $passwordGenerated .= $characterList[$randomIndex];
+            }
         }
         
         return $passwordGenerated;
