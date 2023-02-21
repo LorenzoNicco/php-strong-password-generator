@@ -1,5 +1,19 @@
 <?php
 
+    $password = '';
+    function passwordGenerator($length) {
+        $characterList = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890!£$%&/?@#éè*+-/òà-_:.;,';
+        $passwordGenerated = '';
+        
+        for ($i = 0; $i < $length; $i++) {
+            $randomIndex = rand(0, strlen($characterList));
+            $passwordGenerated .= $characterList[$randomIndex];
+        }
+        
+        return $passwordGenerated;
+    }
+
+    $password = passwordGenerator($_GET["getLength"])
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +25,11 @@
         <title>PHP Strong Password Generator</title>
     </head>
     <body>
-        
+        <form action="" method="GET">
+            <input type="number" name="getLength" value="">
+            <button type="submit">Submit</button>
+        </form>
+
+        <p>La password è: <?php echo $password ?></p>
     </body>
 </html>
