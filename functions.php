@@ -15,6 +15,8 @@
         $passwordSymbols = '!$%&/?@#*+-/_:.;,';
         $passwordRepeat = false;
 
+        $passwordGenerated = '';
+
         if (in_array('letters', $parts)) {
             $characterList .= $passwordLetters;
         }
@@ -31,14 +33,18 @@
             $passwordRepeat = true;
         }
 
-        $passwordGenerated = '';
+
         
         for ($i = 0; $i < $length; $i++) {
             $randomIndex = rand(0, strlen($characterList));
 
             if ($passwordRepeat) {
-                if (strpos($passwordGenerated, $characterList[$randomIndex])) {
+                if ($length > strlen($characterList)) {
+                    return $passwordGenerated = 'Hai richiesto una password troppo lunga.';
+                }
+                elseif (strpos($passwordGenerated, $characterList[$randomIndex])) {
                     $randomIndex = rand(0, strlen($characterList));
+                    $passwordGenerated .= $characterList[$randomIndex];
                 }
                 else {
                     $passwordGenerated .= $characterList[$randomIndex];
