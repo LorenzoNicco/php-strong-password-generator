@@ -12,7 +12,25 @@
     </head>
     <body>
         <form action="" method="GET">
-            <input type="number" name="getLength" value="">
+            <div>
+                <label for="length">Numero di caratteri</label>
+                <input type="number" name="getLength" value="" id="length">
+            </div>
+
+            <div>
+                <label for="letters">Lettere</label>
+                <input type="checkbox" id="letters" name="passwordParts[]" value="letters">
+            </div>
+
+            <div>
+                <label for="numbers">Numeri</label>
+                <input type="checkbox" id="numbers" name="passwordParts[]" value="numbers">
+            </div>
+
+            <div>
+                <label for="symbols">Simboli</label>
+                <input type="checkbox" id="symbols" name="passwordParts[]" value="symbols">
+            </div>
             <button type="submit">Submit</button>
         </form>
     </body>
