@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include __DIR__ .'/functions.php';
 ?>
 
@@ -16,7 +17,7 @@
         <form action="" method="GET">
             <div class="length">
                 <label for="length">Numero di caratteri</label>
-                <input type="number" name="getLength" value="" id="length">
+                <input type="number" name="getLength" value="" id="length" required>
             </div>
 
             <div class="options">

@@ -1,5 +1,4 @@
 <?php
-    session_start();
 
     $passwordParts = [];
     if (isset($_GET['passwordParts'])) {
@@ -43,7 +42,7 @@
                     return $passwordGenerated = 'Hai richiesto una password troppo lunga.';
                 }
                 elseif (strpos($passwordGenerated, $characterList[$randomIndex])) {
-                    $randomIndex = rand(0, strlen($characterList));
+                    $randomIndex = rand(0, strlen($characterList) - 1);
                     $passwordGenerated .= $characterList[$randomIndex];
                 }
                 else {
@@ -58,7 +57,7 @@
         return $passwordGenerated;
     }
 
-    if (isset($_GET["getLength"])) {
+    if (isset($_GET["getLength"]) && is_numeric($_GET["getLength"])) {
         $password = passwordGenerator($_GET["getLength"], $passwordParts);
 
         $_SESSION['password'] = $password;
